@@ -115,13 +115,13 @@ fn main() {
     tree.insert(6);
     tree.insert(8);
 
-    println!("pre order traversal: ");
+    print!("pre order traversal: ");
     tree.print_pre_order();
 
-    println!("in order traversal: ");
+    print!("\nin order traversal: ");
     tree.print_in_order();
 
-    println!("post order traversal: ");
+    print!("\npost order traversal: ");
     tree.print_post_order();
 
     //search for a value in the tree
