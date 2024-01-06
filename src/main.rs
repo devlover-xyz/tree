@@ -52,7 +52,7 @@ impl BinaryTree {
 
     fn pre_order_traversal(root: Option<&Box<Node>>) {
         if let Some(node) = root {
-            println!("{}", node.data);
+            print!("{}, ", node.data);
             Self::pre_order_traversal(node.left.as_ref());
             Self::pre_order_traversal(node.right.as_ref());
         }
@@ -66,7 +66,7 @@ impl BinaryTree {
     fn in_order_traversal(root: Option<&Box<Node>>) {
         if let Some(node) = root {
             Self::in_order_traversal(node.left.as_ref());
-            println!("{}", node.data);
+            print!("{}, ", node.data);
             Self::in_order_traversal(node.right.as_ref());
         }
     }
@@ -80,7 +80,26 @@ impl BinaryTree {
         if let Some(node) = root {
             Self::post_order_traversal(node.left.as_ref());
             Self::post_order_traversal(node.right.as_ref());
-            println!("{}", node.data);
+            print!("{},", node.data);
+        }
+    }
+
+    fn search(&self, data: u32) -> bool {
+        Self::search_recursive(self.root.as_ref(), data)
+    }
+
+    fn search_recursive(root: Option<&Box<Node>>, data: u32) -> bool {
+        match root {
+            Some(node) => {
+                if data == node.data {
+                    true
+                } else if data < node.data {
+                    Self::search_recursive(node.left.as_ref(), data)
+                } else {
+                    Self::search_recursive(node.right.as_ref(), data)
+                }
+            }
+            None => false,
         }
     }
 }
@@ -104,4 +123,13 @@ fn main() {
 
     println!("post order traversal: ");
     tree.print_post_order();
+
+    //search for a value in the tree
+    let search_value = 40;
+    if tree.search(search_value) {
+        println!("{} found in the tree.", search_value);
+    } else {
+        println!("{} not found in the tree.", search_value);
+    }
+
 }
