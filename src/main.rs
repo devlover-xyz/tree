@@ -127,9 +127,9 @@ fn main() {
     //search for a value in the tree
     let search_value = 40;
     if tree.search(search_value) {
-        println!("{} found in the tree.", search_value);
+        println!("\n{} found in the tree.", search_value);
     } else {
-        println!("{} not found in the tree.", search_value);
+        println!("\n{} not found in the tree.", search_value);
     }
 
 }
